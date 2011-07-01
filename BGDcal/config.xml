@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<widget id="BGDcal" version="1.0" width="120" height="180"
+	xmlns="http://www.w3.org/ns/widgets">
+ <title>BGDcal</title>
+ <description>Calendrier des cycles 4/2.</description>
+ <icon src="images/icon.png"/>
+ <content src="index.html"/>
+ <access network="false"/>
+</widget>
