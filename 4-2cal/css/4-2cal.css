@@ -25,9 +25,9 @@ span.logoLabel
 }
 
 .box {
-  background-color: black;
-  opacity: 0.5;
-  border: thin black solid;
+  background-color: #7b7b7b;
+  opacity: 0.6;
+  border: medium black solid;
   color: white;
   align: center;
   vertical-align: middle;
