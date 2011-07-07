@@ -30,8 +30,7 @@ function testLogo()
  
 
 /* date related stuff */
-function cal() {
-  
+
   var Months = new Array(12);
   Months[0] = ("janvier");
   Months[1] = ("février");
@@ -48,8 +47,8 @@ function cal() {
   
   var Days = new Array(7);
   Days[0] = ("L");
-  Days[1] = ("M");
-  Days[2] = ("M");
+  Days[1] = ("Ma");
+  Days[2] = ("Me");
   Days[3] = ("J");
   Days[4] = ("V");
   Days[5] = ("S");
@@ -61,18 +60,13 @@ function cal() {
   var stdout;
   
   var Cal = new Date();
-  var Today = Calendar.getDate(); 
+  var Today = Calendar.getDate();
+  var Weekday = Calendar.getDay();
   
-  /* first list days of the month */
-  stdout += '<tr class="days">';
-  for (i=0; i < MaxDaysPerWeek; i++){
-    if (Weekday == i) {
-      stdout += '<td>' + Days[i] + '</td>'>;
-    } else {
-      stdout += '<td class="less">' + Days[i] + '</td>'>;
-    }
-  }
-  stdout += '</tr><tr>';
+  /* make more visible the current day */
+  document.getElementById(Days[Weekday]).style['text-decoration'] = 'underline: true';
+
+  stdout += '<tr>';
   
   /* then actually list days */
   for(i=0; i < Cal.getDay(); i++) {
@@ -101,7 +95,7 @@ function cal() {
   }
 
   document.write(stdout);
-}
+
 
 
 
