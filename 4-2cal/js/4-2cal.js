@@ -17,6 +17,11 @@
    USA
 */
 
+function initMain(){
+
+}
+
+
 function testLogo()
 {
  alert('Hello Bada');
