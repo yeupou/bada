@@ -28,7 +28,13 @@ span.logoLabel
   background-color: black;
   opacity: 0.5;
   border: thin black solid;
-  color: white;  
+  color: white;
+  align: center;
+  vertical-align: middle;
+}
+
+table {    
+  opacity: 1;
 }
 
 td.dayofweek {
