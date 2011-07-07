@@ -25,15 +25,14 @@ span.logoLabel
 }
 
 .box {
-  background-image: url("images/back.png");
+  background-image: url(images/back.png);
   border: thin black inset;
   color: white;
-  align: center;
+  text-align: center;
   vertical-align: middle;
 }
 
 table {    
-  align: center;
   border: 0;
 }
 
