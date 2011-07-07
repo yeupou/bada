@@ -26,7 +26,7 @@ span.logoLabel
 
 .box {
   background-color: #333333;
-  opacity: 0.6;
+  opacity: 0.9;
   border: thin black inset;
   color: white;
   align: center;
@@ -34,10 +34,11 @@ span.logoLabel
 }
 
 table {    
-  opacity: 1;
+  align: center;
+  border: 0;
 }
 
-td.dayofweek {
+.title {
   font-weight: bold;
-  opacity: 1;
+  opacity: 1.0;
 }
