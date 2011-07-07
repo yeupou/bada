@@ -68,7 +68,8 @@ function buildcal() {
   /* make more visible the current day */
   document.getElementById(Days[Weekday]).style['text-decoration'] = 'underline: true';
   // DBG
-  document.getElementById(Days[L]).style['text-decoration'] = 'underline: true';
+  document.getElementById(Days[0]).style['text-decoration'] = 'underline: true';
+  document.getElementById('Me').style['text-decoration'] = 'underline: true';
 
   stdout += '<tr>';
   
