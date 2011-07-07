@@ -24,11 +24,11 @@ span.logoLabel
   color:#FFFFFF;
 }
 
-table.box {
+.box {
   background-color: black;
   opacity: 0.5;
   border: thin black solid;
-  
+  color: white;  
 }
 
 td.dayofweek {
