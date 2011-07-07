@@ -17,8 +17,8 @@
    USA
 */
 
-function initMain(){
-
+function init(){
+  document.getElementById('box').style['background-image'] = 'url(images/back.png)';
 }
 
 
