@@ -23,7 +23,8 @@ VERSION=`expr $VERSION + 1`
 echo "VERSION=$VERSION" > 4-2calversion
 
 echo '<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<widget id="4-2cal" version="1.'$VERSION'" xmlns="http://www.w3.org/ns/widgets">
+<widget id="4-2cal" version="1.'$VERSION'" width="120" height="200"
+	xmlns="http://www.w3.org/ns/widgets">
  <title>4-2cal</title>
  <description>Calendrier des cycles 4/2.</description>
  <icon src="images/icon.png"/>

@@ -24,7 +24,7 @@ span.logoLabel
   color:#FFFFFF;
 }
 
-#back {
+table.box {
   background-image: url("images/back.png");
 }
 
