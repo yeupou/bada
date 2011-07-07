@@ -18,7 +18,8 @@
 */
 
 function init(){
-  document.getElementById('box').style['background-image'] = 'url(images/back.png)';
+  /* workaround: bada 1.1 disregards background-image properly set in CSS */ 
+  // document.getElementById('box').style['background-image'] = 'url(images/back.png)';
 }
 
 
