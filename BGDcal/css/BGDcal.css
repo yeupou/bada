@@ -1,6 +1,16 @@
 span.logoLabel
 {
- top: 5px;
- font-size:20px;
- color:#FFFFFF;
+  top: 5px;
+  font-size:20px;
+  color:#FFFFFF;
+}
+
+#back {
+  background-image: url("images/back.png");
+  opacity: 1;
+  background-repeat: no-repeat;
+}
+
+td.dayofweek {
+  font-weight: bold;
 }
