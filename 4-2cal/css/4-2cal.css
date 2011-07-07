@@ -25,9 +25,14 @@ span.logoLabel
 }
 
 table.box {
-  background-image: url("images/back.png");
+  background-color: black;
+  opacity: 0.5;
+  border: thin black solid;
+  
 }
 
 td.dayofweek {
   font-weight: bold;
+  background-color: black;
+  opacity: 1;
 }
