@@ -1,11 +1,11 @@
 
-all: clean cal git
+all: clean git
 
 clean:
 	mrclean .
 
 
-cal:
+cal: clean git
 	sh 4-2calconfig.sh
 	rm -f 4-2cal.wgt
 	cd 4-2cal && zip -r ../4-2cal.zip *
