@@ -20,6 +20,8 @@
 function init(){
   /* workaround: bada 1.1 disregards background-image properly set in CSS */ 
   document.getElementById('box').style['background-image'] = 'url(images/back.png)';
+
+  buildcal();
 }
 
 
@@ -30,7 +32,7 @@ function testLogo()
  
 
 /* date related stuff */
-
+function buildcal() {
   var Months = new Array(12);
   Months[0] = ("janvier");
   Months[1] = ("février");
@@ -65,6 +67,8 @@ function testLogo()
   
   /* make more visible the current day */
   document.getElementById(Days[Weekday]).style['text-decoration'] = 'underline: true';
+  // DBG
+  document.getElementById(Days[L]).style['text-decoration'] = 'underline: true';
 
   stdout += '<tr>';
   
