@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<widget id="BGDcal" version="1.0" width="120" height="180"
+<widget id="4-2cal" version="1.0" width="120" height="180"
 	xmlns="http://www.w3.org/ns/widgets">
- <title>BGDcal</title>
+ <title>4-2cal</title>
  <description>Calendrier des cycles 4/2.</description>
  <icon src="images/icon.png"/>
  <content src="index.html"/>

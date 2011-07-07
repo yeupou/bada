@@ -1,12 +1,12 @@
 
-all: bgdcal git
+all: cal git
 
 
-bgdcal:
-	mrclean BGDcal
-	rm -f BGDcal.wgt
-	cd BGDcal && zip -r ../BGDcal.zip *
-	mv BGDcal.zip BGDcal.wgt
+cal:
+	mrclean 4-2cal
+	rm -f 4-2cal.wgt
+	cd 4-2cal && zip -r ../4-2cal.zip *
+	mv 4-2cal.zip 4-2cal.wgt
 
 git:
 	git commit -a -m "Update"
