@@ -26,7 +26,8 @@ span.logoLabel
 
 #box {
   background-image: url(images/back.png);
-  border: thin black inset;
+  border: thin black inset; 
+  border-radius: 3px;
   color: white;
   text-align: center;
   vertical-align: middle;
@@ -37,12 +38,12 @@ table {
 }
 
 .month {
-  position: relative;
-  top: -0.5em
-  right: -0.5em
-  width: 1em;
 }
 
 .days {
   font-weight: bold;
+}
+
+.less {
+  opacity: 0.7;
 }

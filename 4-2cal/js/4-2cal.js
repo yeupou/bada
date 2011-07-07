@@ -19,7 +19,7 @@
 
 function init(){
   /* workaround: bada 1.1 disregards background-image properly set in CSS */ 
-  // document.getElementById('box').style['background-image'] = 'url(images/back.png)';
+  document.getElementById('box').style['background-image'] = 'url(images/back.png)';
 }
 
 
@@ -29,30 +29,80 @@ function testLogo()
 }
  
 
-
-var MonthsOfYear = new Array(12);
-	MonthsOfYear[0] = ("janvier");
-	MonthsOfYear[1] = ("février");
-	MonthsOfYear[2] = ("mars");
-	MonthsOfYear[3] = ("avril");
-	MonthsOfYear[4] = ("mai");
-	MonthsOfYear[5] = ("juin");
-	MonthsOfYear[6] = ("juillet");
-	MonthsOfYear[7] = ("août");
-	MonthsOfYear[8] = ("septembre");
-	MonthsOfYear[9] = ("octobre");
-	MonthsOfYear[10] = ("novembre");
-	MonthsOfYear[11] = ("décembre");
+/* date related stuff */
+function cal() {
+  
+  var Months = new Array(12);
+  Months[0] = ("janvier");
+  Months[1] = ("février");
+  Months[2] = ("mars");
+  Months[3] = ("avril");
+  Months[4] = ("mai");
+  Months[5] = ("juin");
+  Months[6] = ("juillet");
+  Months[7] = ("août");
+  Months[8] = ("septembre");
+  Months[9] = ("octobre");
+  Months[10] = ("novembre");
+  Months[11] = ("décembre");
+  
+  var Days = new Array(7);
+  Days[0] = ("L");
+  Days[1] = ("M");
+  Days[2] = ("M");
+  Days[3] = ("J");
+  Days[4] = ("V");
+  Days[5] = ("S");
+  Days[6] = ("D");
+  
+  var MaxDaysPerWeek = 7;
+  var MaxDaysPerMonth = 31;
+  
+  var stdout;
+  
+  var Cal = new Date();
+  var Today = Calendar.getDate(); 
+  
+  /* first list days of the month */
+  stdout += '<tr class="days">';
+  for (i=0; i < MaxDaysPerWeek; i++){
+    if (Weekday == i) {
+      stdout += '<td>' + Days[i] + '</td>'>;
+    } else {
+      stdout += '<td class="less">' + Days[i] + '</td>'>;
+    }
+  }
+  stdout += '</tr><tr>';
+  
+  /* then actually list days */
+  for(i=0; i < Cal.getDay(); i++) {
+    stdout += '<td>&nbsp;</td>';
+  }  
+  for(i=0; i < MaxDaysPerMonth; i++) {
+    if (Cal.getDate() > i) {
+      cur = Cal.getDay();
+      
+      if (cur == 0) {
+	stdout += '<tr>';
+      }
+      
+      if (cur != MaxDaysPerWeek) {
+	stdout += '<td>' + Cal.getDate() + '</td>';
 	
-var DaysOfWeek = new Array(7);
-	DaysOfWeek[0] = ("lundi");
-	DaysOfWeek[1] = ("mardi");
-	DaysOfWeek[2] = ("mercredi");
-	DaysOfWeek[3] = ("jeudi");
-	DaysOfWeek[4] = ("vendredi");
-	DaysOfWeek[5] = ("samedi");
-	DaysOfWeek[6] = ("dimanche");
+      }
+
+      if (cur == MaxDaysPerWeek) {
+	stdout += '</tr>';
+      }
+      
+      Cal.setDate(Cal.getDate()+1);
+      
+    }
+  }
+
+  document.write(stdout);
+}
 
 
 
-// EOF
+/* EOF */
