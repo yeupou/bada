@@ -25,9 +25,9 @@ span.logoLabel
 }
 
 .box {
-  background-color: #7b7b7b;
+  background-color: #333333;
   opacity: 0.6;
-  border: medium black solid;
+  border: thin black inset;
   color: white;
   align: center;
   vertical-align: middle;
@@ -39,4 +39,5 @@ table {
 
 td.dayofweek {
   font-weight: bold;
+  opacity: 1;
 }
