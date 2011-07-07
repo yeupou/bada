@@ -25,7 +25,7 @@ span.logoLabel
 }
 
 .box {
-  background-image: url(back.png);
+  background-image: url(/images/back.png);
   border: thin black inset;
   color: white;
   text-align: center;
@@ -37,8 +37,10 @@ table {
 }
 
 .month {
-  float: right;
-  width: 1.2em;
+  position: absolute;
+  top: -0.5em
+  right: -0.5em
+  width: 1em;
 }
 
 .days {
