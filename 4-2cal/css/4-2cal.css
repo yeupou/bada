@@ -26,7 +26,7 @@ span.logoLabel
 
 .box {
   background-color: #333333;
-  opacity: 0.9;
+  opacity: 0.8;
   border: thin black inset;
   color: white;
   align: center;
@@ -40,5 +40,6 @@ table {
 
 .title {
   font-weight: bold;
+  border-bottom: thin black solid;
   opacity: 1.0;
 }
