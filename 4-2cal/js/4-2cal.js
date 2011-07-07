@@ -100,7 +100,7 @@ function buildcal() {
 
   document.write(stdout);
 
-
+}
 
 
 /* EOF */
