@@ -1,5 +1,5 @@
 
-all: bgdcal
+all: bgdcal git
 
 
 bgdcal:
@@ -7,5 +7,8 @@ bgdcal:
 	rm -f BGDcal.wgt
 	cd BGDcal && zip -r ../BGDcal.zip *
 	mv BGDcal.zip BGDcal.wgt
+
+git:
 	git commit -a -m "Update"
+	git push
 
