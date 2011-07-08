@@ -17,6 +17,10 @@
    USA
 */
 
+/* for future ref */
+shownMonth = undefined;
+shownYear = undefined;
+
 function init(){
   /* FIXME: disregards background-image set in CSS */ 
   document.getElementById('box').style['background-image'] = 'url(images/back.png)'; 
@@ -25,7 +29,7 @@ function init(){
 }
 
 /* date related stuff */
-function buildCal() {
+function buildCal(monthAsked) {
   var Months = new Array(12);
   
   var Days = new Array(7);
@@ -43,19 +47,50 @@ function buildCal() {
   var stdout = '<tr>';
     
   var Cal = new Date(); 
+  /* set data: if unset, assume we want current year and month */
   var Today = Cal.getDate();
   var Weekday = (Cal.getDay() + 6) % 7; /* getDay that starts weeks on Sat */
-  var Month = Cal.getMonth(); 
-  var Year = Cal.getYear(); 
+  if (shownMonth == undefined) { shownMonth = Cal.getMonth(); }
+  var Month = shownMonth;
+  if (shownYear == undefined) { shownYear = Cal.getFullYear(); }
+  var Year = shownYear;
 
-  /* set more visibility for the current day of the week */
-  document.getElementById(Days[Weekday]).style['text-decoration'] = 'underline';
+
+  /* check if asking for month other than current one */
+  if (monthAsked != undefined) {
+    Month = Month + monthAsked;
+    
+    /* other year asked */
+    if (Month > 11 && monthAsked > 0) {
+      Year = Year + 1;
+      shownYear = Year;
+      Month = 0;
+    }
+    if (Month < 0 && monthAsked < 0) {
+      Year = Year - 1;
+      shownYear = Year;
+      Month = 11;
+    }
+ 
+    /* for future ref */
+    shownMonth = Month;
+  }
+
+  Cal.setMonth(Month);
+  Cal.setYear(Year);
+
+  /* set more visibility for the current day of the week of current month */
+  if (monthAsked == undefined) {
+    document.getElementById(Days[Weekday]).style['text-decoration'] = 'underline';
+  } else {    
+    document.getElementById(Days[Weekday]).style['text-decoration'] = 'none';    
+  }
 
   /* print name of the currently printed month, hide the others */
-  document.getElementById('month' + Cal.getMonth()).style['background-image'] = 'url(images/back.png)';
-  document.getElementById('month' + Cal.getMonth()).style['display'] = 'inline';   
+  document.getElementById('month' + Month).style['background-image'] = 'url(images/back.png)';
+  document.getElementById('month' + Month).style['display'] = 'inline';   
   for(i=0; i < 12; i++) {
-     if (i != Cal.getMonth()) {
+     if (i != Month) {
        document.getElementById('month' + i).style['display'] = 'none';
      }
   } 
@@ -101,8 +136,7 @@ function buildCal() {
 }
 
 function showYear() {
-  var Cal = new Date(); 
-  alert(Cal.getFullYear());
+  alert(shownYear);
 }
 
 /* EOF */
