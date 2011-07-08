@@ -20,6 +20,7 @@
 /* for future ref */
 shownMonth = undefined;
 shownYear = undefined;
+group = undefined;
 
 function init(){
   /* FIXME: disregards background-image set in CSS */ 
@@ -27,6 +28,9 @@ function init(){
   document.getElementById('buttons').style['background-image'] = 'url(images/back2.png)'; 
   document.getElementById('config').style['background-image'] = 'url(images/back2.png)'; 
   document.getElementById('configtitle').style['background-image'] = 'url(images/back.png)'; 
+  
+  group = widget.preferenceForKey('prefGroup');
+
 
   buildCal();
 }
@@ -170,6 +174,10 @@ function editConfig() {
 }
 
 function setConfig(groupAsked) {
+  widget.setPreferenceForKey('prefGroup', groupAsked);
+  group = groupAsked;
+  buildCal();  
+
   document.getElementById('box').style['display'] = 'block'; 
   document.getElementById('buttons').style['display'] = 'block'; 
   document.getElementById('config').style['display'] = 'none';   
