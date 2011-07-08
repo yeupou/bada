@@ -1,5 +1,5 @@
 /*
-   Copyright (c) 2010 Mathieu Roy <yeupou--gnu.org>
+   Copyright (c) 2011 Mathieu Roy <yeupou--gnu.org>
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -22,8 +22,6 @@ function init(){
   document.getElementById('box').style['background-image'] = 'url(images/back.png)'; 
 
 }
-
-
 
 /* date related stuff */
 function buildCal() {
@@ -100,5 +98,10 @@ function buildCal() {
 
 }
 
+
+function showYear() {
+  var Cal = new Date(); 
+  alert(Cal.getFullYear());
+}
 
 /* EOF */

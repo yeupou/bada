@@ -10,18 +10,18 @@
 <body onload="javascript:init();">
   
   <div id="box">
-    <div id="month0">J a n v i e r</div>
-    <div id="month1">F é v r i e r</div>
-    <div id="month2">M a r s</div>
-    <div id="month3">A v r i l</div>
-    <div id="month4">M a i</div>
-    <div id="month5">J u i n</div>
-    <div id="month6">J u i l l e t</div>
-    <div id="month7">A o û t</div>
-    <div id="month8">S e p t e m b r e</div>
-    <div id="month9">O c t o b r e</div>
-    <div id="month10">N o v e m b r e</div>
-    <div id="month11">D é c e m b r e</div>
+    <div id="month0" onclick="javascript:showYear();">J a n v i e r</div>
+    <div id="month1" onclick="javascript:showYear();">F é v r i e r</div>
+    <div id="month2" onclick="javascript:showYear();">M a r s</div>
+    <div id="month3" onclick="javascript:showYear();">A v r i l</div>
+    <div id="month4" onclick="javascript:showYear();">M a i</div>
+    <div id="month5" onclick="javascript:showYear();">J u i n</div>
+    <div id="month6" onclick="javascript:showYear();">J u i l l e t</div>
+    <div id="month7" onclick="javascript:showYear();">A o û t</div>
+    <div id="month8" onclick="javascript:showYear();">S e p t e m b r e</div>
+    <div id="month9" onclick="javascript:showYear();">O c t o b r e</div>
+    <div id="month10" onclick="javascript:showYear();">N o v e m b r e</div>
+    <div id="month11" onclick="javascript:showYear();">D é c e m b r e</div>
     <table>
       <tr class="days">
 	<td id="L">L</td>
@@ -34,6 +34,8 @@
       </tr>
       <script type="text/javascript">buildCal()</script>
     </table>
+    <img class="nextprev" alt="mois précédent" src="images/go-previous.png"></img>
+    <img class="nextprev" alt="mois suivant" src="images/go-next.png"></img>
   </div>
   
 </body>
