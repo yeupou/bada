@@ -53,18 +53,18 @@ table {
   text-decoration: underline;
 }
 
-#month0 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 1em; padding-left: 0.3em;  }
-#month1 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 1em; padding-left: 0.3em;  }
-#month2 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 1em; padding-left: 0.3em;  }
-#month3 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 1em; padding-left: 0.3em;  }
-#month4 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 1em; padding-left: 0.3em;  }
-#month5 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 1em; padding-left: 0.3em;  }
-#month6 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 1em; padding-left: 0.3em; }
-#month7 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 1em; padding-left: 0.3em;  }
-#month8 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 1em; padding-left: 0.3em;  }
-#month9 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 1em; padding-left: 0.3em;  }
-#month10 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 1em; padding-left: 0.3em;  }
-#month11 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 1em; padding-left: 0.3em;  }
+#month0 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }
+#month1 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }
+#month2 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }
+#month3 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }
+#month4 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }
+#month5 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }
+#month6 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em; }
+#month7 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }
+#month8 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }
+#month9 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }
+#month10 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }
+#month11 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }
 
 
 /* EOF */
