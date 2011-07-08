@@ -25,16 +25,19 @@ span.logoLabel
 }
 
 #box {
-  background-image: url("images/back.png"); 
+  background-image: url(images/back.png); 
   border: thin black inset; 
-  border-radius: 3px;
+  border-radius: 0.8em;
   color: white;
   text-align: center;
   vertical-align: middle;
+  width: 11em;
 }
 
 table {    
   border: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .days {
