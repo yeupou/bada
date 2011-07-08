@@ -21,6 +21,7 @@ function init(){
   /* FIXME: disregards background-image set in CSS */ 
   document.getElementById('box').style['background-image'] = 'url(images/back.png)'; 
 
+  buildCal();
 }
 
 /* date related stuff */
@@ -39,7 +40,7 @@ function buildCal() {
   var MaxDaysPerWeek = 7;
   var MaxDaysPerMonth = 31;
 
-  var stdout;
+  var stdout = '<tr>';
     
   var Cal = new Date(); 
   var Today = Cal.getDate();
@@ -60,7 +61,7 @@ function buildCal() {
   } 
 
   /* build a neat days table: */
-  stdout = '<tr>';
+
   
   /* first blank spaces (starts at 1st) */
   Cal.setDate(1);
@@ -69,6 +70,7 @@ function buildCal() {
   }  
 
   /* then real days */
+  var thisWeekday = (Cal.getDay() + 6) % 7;
   for(i=0; i < MaxDaysPerMonth; i++) {
     if (Cal.getDate() > i) {
       var thisWeekday = (Cal.getDay() + 6) % 7;
@@ -86,18 +88,17 @@ function buildCal() {
       }
       
       if (thisWeekday == MaxDaysPerWeek) {
-	stdout += '</tr>';
+		stdout += '</tr>';
       }
       
       Cal.setDate(Cal.getDate()+1);
       
     }
   }
-
-  document.write(stdout);
+  
+  document.getElementById("cal").innerHTML=stdout;
 
 }
-
 
 function showYear() {
   var Cal = new Date(); 
