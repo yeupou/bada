@@ -29,8 +29,17 @@ function init(){
   document.getElementById('config').style['background-image'] = 'url(images/back2.png)'; 
   document.getElementById('configtitle').style['background-image'] = 'url(images/back.png)'; 
   
-  group = widget.preferenceForKey('prefGroup');
-
+  /* obtain cookie-stored config */
+  var cookieSplit = document.cookie.split(';'); 
+  for(i=0; i < cookieSplit.length; i++) {
+    var c = cookieSplit[i];
+    while (c.charAt(0) == ' ') { 
+      c = c.substring(1,c.length);
+    }
+    if (c.indexOf('groupPref=') == 0) {
+      group = c.substring('groupPref='.length,c.length);
+    }
+  } 
 
   buildCal();
 }
@@ -109,11 +118,23 @@ function buildCal(monthAsked) {
      }
   } 
 
+  /* check where we are exactly cycle wise when starting the month 
+     (the point is to do one check and increment a counter, instead of
+     computing for each day) */
+  cycleAMPM = undefined;
+  cycleDay = undefined;      
+  if (group != undefined) {
+    /* we decided to work with date references as of june 2011, so
+     this wont work for any date before july. Squish it here */
+    if (Year > 2011 || Month > 5) {
+      guessCycle(new Date(Year,Month,1,12,0,0));
+    }
+  }
+
   /* build a neat days table:
      keep tracks of the number of rows, so the interface stays consistent
      over months */
   var rows = 1;
-
   
   /* first blank spaces (starts at 1st) */
   Cal.setDate(1);
@@ -123,11 +144,9 @@ function buildCal(monthAsked) {
   /* if no blank column necessary, decrement row count */
   if (stdout == '<tr>') { rows = 0; }
 
-
-
   /* then real days */
   var thisWeekday = (Cal.getDay() + 6) % 7;
-  for(i=0; i < MaxDaysPerMonth; i++) {
+  for (i=0; i < MaxDaysPerMonth; i++) {
     if (Cal.getDate() > i) {
       var thisWeekday = (Cal.getDay() + 6) % 7;
       
@@ -137,11 +156,43 @@ function buildCal(monthAsked) {
       }
       
       if (thisWeekday != MaxDaysPerWeek) {
-	if (Cal.getDate() == Today && monthAsked == undefined) { 
-	  stdout += '<td class="underline">' + Cal.getDate() + '</td>';
-	} else {
-	  stdout += '<td>' + Cal.getDate() + '</td>';
+	
+	/* if possible, prepare the relevant class of the day field */
+	var class = undefined;
+	if (cycleDay != undefined && cycleAMPM != undefined) {
+	  /* RL/RC stays blank */
+	  if (cycleDay < 5) {
+	    if (cycleAMPM == 'PM') { class = 'pm'; }
+	    if (cycleAMPM == 'AM') { class = 'am'; }
+	  }
+
+	  cycleDay++;
+	  if (cycleDay > 6) { 
+	    cycleDay = 1; 
+	    if (cycleAMPM == 'PM') {
+	      cycleAMPM = 'AM';
+	    } else {
+	      cycleAMPM = 'PM';
+	    }
+	  }
 	}
+	
+	stdout += '<td';
+	
+	if (class != undefined) {
+	  stdout += ' class="'+class+'"';
+	}
+	stdout += '>';
+	
+
+	if (Cal.getDate() == Today && monthAsked == undefined) { 
+	  stdout += '<span class="underline">' + Cal.getDate() + '</span>';
+	} else {
+	  stdout += Cal.getDate();
+	}
+	
+	stdout += '</td>';
+
       }
       
       if (thisWeekday == MaxDaysPerWeek) {
@@ -166,6 +217,42 @@ function showYear() {
   alert(shownYear);
 }
 
+function guessCycle(ToCompareDate) {
+  /* compare sent date with the reference date: */
+
+  var RefDate;
+  if (group == undefined) { return; }
+  if (group == 1) { RefDate = new Date(2011,5,26,12,0,0); }
+  if (group == 2) { RefDate = new Date(2011,5,22,12,0,0); }
+  if (group == 3) { RefDate = new Date(2011,5,30,12,0,0); }
+
+  /* result in days */
+  var Delta = (ToCompareDate.getTime() - RefDate.getTime())/86400000;
+
+  var counterAMPM = 'PM';
+  var counterDayOfCycle = 1;
+  for (day=0; day < Delta; day++) {
+    counterDayOfCycle++;
+    if (counterDayOfCycle > 6) { 
+      counterDayOfCycle = 1; 
+      if (counterAMPM == 'PM') {
+	counterAMPM = 'AM';
+      } else {
+	counterAMPM = 'PM';
+      }
+    }
+  }
+
+  cycleAMPM = counterAMPM;
+  cycleDay = counterDayOfCycle;      
+  
+  //DBG alert(counterDayOfCycle +' '+counterAMPM+' Delta='+Delta);
+  //DBG alert(RefDate.getTime()+' '+ToCompareDate.getTime()+' '+Delta);
+  //DBG alert(RefDate+' '+ToCompareDate+' '+Delta);
+
+  return;  
+}
+
 function editConfig() {
   document.getElementById('box').style['display'] = 'none'; 
   document.getElementById('buttons').style['display'] = 'none'; 
@@ -174,9 +261,14 @@ function editConfig() {
 }
 
 function setConfig(groupAsked) {
-  widget.setPreferenceForKey('prefGroup', groupAsked);
+  /* store config in cookie */
+  var Expires = new Date();
+  Expires.setTime(Expires.getTime()+(172800000000));
+  document.cookie = 'groupPref='+groupAsked+'; expires='+Expires.toGMTString()+'; path=/';
+
+  /* redraw calendar */
   group = groupAsked;
-  buildCal();  
+  buildCal(0);  
 
   document.getElementById('box').style['display'] = 'block'; 
   document.getElementById('buttons').style['display'] = 'block'; 

@@ -70,6 +70,14 @@ table {
   opacity: 0.7;
 }
 
+.am {
+  color: #66aeff;
+}
+
+.pm { 
+  color: #ff8366;
+}
+
 .underline {
   text-decoration: underline;
 }
