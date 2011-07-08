@@ -158,12 +158,12 @@ function buildCal(monthAsked) {
       if (thisWeekday != MaxDaysPerWeek) {
 	
 	/* if possible, prepare the relevant class of the day field */
-	var class = undefined;
+	var dayClass = undefined;
 	if (cycleDay != undefined && cycleAMPM != undefined) {
 	  /* RLRC stays blank */
 	  if (cycleDay < 5) {
-	    if (cycleAMPM == 'PM') { class = 'pm'; }
-	    if (cycleAMPM == 'AM') { class = 'am'; }
+	    if (cycleAMPM == 'PM') { dayClass = 'pm'; }
+	    if (cycleAMPM == 'AM') { dayClass = 'am'; }
 	  }
 
 	  cycleDay++;
@@ -175,12 +175,12 @@ function buildCal(monthAsked) {
 	      cycleAMPM = 'PM';
 	    }
 	  }
-	}
+	} 
 	
 	stdout += '<td';
 	
-	if (class != undefined) {
-	  stdout += ' class="'+class+'"';
+	if (dayClass != undefined) {
+	  stdout += ' class="'+dayClass+'"';
 	}
 	stdout += '>';
 	
@@ -217,9 +217,10 @@ function showYear() {
   alert(shownYear);
 }
 
+
 function guessCycle(ToCompareDate) {
   /* compare sent date with the reference date: */
-
+  
   var RefDate;
   if (group == undefined) { return; }
   if (group == 1) { RefDate = new Date(2011,5,26,12,0,0); }
@@ -246,10 +247,6 @@ function guessCycle(ToCompareDate) {
   cycleAMPM = counterAMPM;
   cycleDay = counterDayOfCycle;      
   
-  //DBG alert(counterDayOfCycle +' '+counterAMPM+' Delta='+Delta);
-  //DBG alert(RefDate.getTime()+' '+ToCompareDate.getTime()+' '+Delta);
-  //DBG alert(RefDate+' '+ToCompareDate+' '+Delta);
-
   return;  
 }
 
@@ -268,7 +265,7 @@ function setConfig(groupAsked) {
 
   /* redraw calendar */
   group = groupAsked;
-  buildCal(0);  
+  buildCal(0); 
 
   document.getElementById('box').style['display'] = 'block'; 
   document.getElementById('buttons').style['display'] = 'block'; 
