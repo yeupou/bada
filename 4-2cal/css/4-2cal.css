@@ -27,6 +27,11 @@
   width: 11em;
 }
 
+#buttons {
+  position: absolute;
+  margin-top: 0.5em;
+}
+
 table {    
   border: 0;
   padding: 0;
