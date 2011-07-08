@@ -28,8 +28,15 @@ function init(){
   buildCal();
 }
 
+function resetCal(){
+  shownMonth = undefined;
+  shownYear = undefined;
+  buildCal();  
+}
+
 /* date related stuff */
 function buildCal(monthAsked) {
+
   var Months = new Array(12);
   
   var Days = new Array(7);
