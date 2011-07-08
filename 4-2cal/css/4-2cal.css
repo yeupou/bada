@@ -48,8 +48,6 @@ table {
 
 img.nextprev {
   width: 3em;
-  padding-left: 1em;
-  padding-right: 1em;
 }
 
 #month0 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }
