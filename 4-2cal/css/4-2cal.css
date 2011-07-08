@@ -20,7 +20,7 @@
 #box {
   background-image: url(images/back.png); 
   border: thin black inset; 
-  border-radius: 0.8em;
+  border-radius: 0.8em 0.8em 0 0;
   color: white;
   text-align: center;
   vertical-align: middle;
@@ -28,8 +28,31 @@
 }
 
 #buttons {
+  background-image: url(images/back2.png); 
+  width: 11em;
   position: absolute;
-  margin-top: 0.5em;
+  margin-top: 2px;
+  text-align: left;
+  border: thin black inset; 
+  border-radius: 0 0 0.8em 0.8em;
+}
+
+#config {
+  display: none;
+  background: url(images/back2.png); 
+  width: 11em;
+  text-align: left;
+  color: white;
+  border: thin black inset; 
+  border-radius: 0.8em 0.8em 0 0;
+}
+#configtitle { border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }
+#configcontent { padding-top: 2em;  }
+button {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-bottom: 0.5em;
+    
 }
 
 table {    

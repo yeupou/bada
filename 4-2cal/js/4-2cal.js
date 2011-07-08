@@ -24,6 +24,9 @@ shownYear = undefined;
 function init(){
   /* FIXME: disregards background-image set in CSS */ 
   document.getElementById('box').style['background-image'] = 'url(images/back.png)'; 
+  document.getElementById('buttons').style['background-image'] = 'url(images/back2.png)'; 
+  document.getElementById('config').style['background-image'] = 'url(images/back2.png)'; 
+  document.getElementById('configtitle').style['background-image'] = 'url(images/back.png)'; 
 
   buildCal();
 }
@@ -102,7 +105,10 @@ function buildCal(monthAsked) {
      }
   } 
 
-  /* build a neat days table: */
+  /* build a neat days table:
+     keep tracks of the number of rows, so the interface stays consistent
+     over months */
+  var rows = 1;
 
   
   /* first blank spaces (starts at 1st) */
@@ -110,6 +116,10 @@ function buildCal(monthAsked) {
   for(i=0; i < (Cal.getDay() + 6) % 7; i++) {
     stdout += '<td>&nbsp;</td>';
   }  
+  /* if no blank column necessary, decrement row count */
+  if (stdout == '<tr>') { rows = 0; }
+
+
 
   /* then real days */
   var thisWeekday = (Cal.getDay() + 6) % 7;
@@ -119,10 +129,11 @@ function buildCal(monthAsked) {
       
       if (thisWeekday == 0) {
 	stdout += '<tr>';
+	rows = rows + 1;
       }
       
       if (thisWeekday != MaxDaysPerWeek) {
-	if (Cal.getDate() == Today) { 
+	if (Cal.getDate() == Today && monthAsked == undefined) { 
 	  stdout += '<td class="underline">' + Cal.getDate() + '</td>';
 	} else {
 	  stdout += '<td>' + Cal.getDate() + '</td>';
@@ -138,12 +149,30 @@ function buildCal(monthAsked) {
     }
   }
   
+  /* Force 6 rows table */
+  for(i=rows; i < 6; i++) {
+    stdout += '<tr><td>&nbsp;</td></tr>';
+  }
+  
   document.getElementById("cal").innerHTML=stdout;
 
 }
 
 function showYear() {
   alert(shownYear);
+}
+
+function editConfig() {
+  document.getElementById('box').style['display'] = 'none'; 
+  document.getElementById('buttons').style['display'] = 'none'; 
+  document.getElementById('config').style['display'] = 'block'; 
+
+}
+
+function setConfig(groupAsked) {
+  document.getElementById('box').style['display'] = 'block'; 
+  document.getElementById('buttons').style['display'] = 'block'; 
+  document.getElementById('config').style['display'] = 'none';   
 }
 
 /* EOF */
