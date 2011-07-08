@@ -25,7 +25,7 @@ span.logoLabel
 }
 
 #box {
-  background-image: url(images/back.png);
+  background-image: url("images/back.png"); 
   border: thin black inset; 
   border-radius: 3px;
   color: white;
@@ -37,9 +37,6 @@ table {
   border: 0;
 }
 
-.month {
-}
-
 .days {
   width: 1.5em;
   font-weight: bold;
@@ -48,3 +45,23 @@ table {
 .less {
   opacity: 0.7;
 }
+
+.underline {
+  text-decoration: underline;
+}
+
+#month0 { visibility: hidden; display: none;  }
+#month1 { visibility: hidden; display: none;  }
+#month2 { visibility: hidden; display: none;  }
+#month3 { visibility: hidden; display: none;  }
+#month4 { visibility: hidden; display: none;  }
+#month5 { visibility: hidden; display: none;  }
+#month6 { visibility: hidden; display: none;  }
+#month7 { visibility: hidden; display: none;  }
+#month8 { visibility: hidden; display: none;  }
+#month9 { visibility: hidden; display: none;  }
+#month10 { visibility: hidden; display: none;  }
+#month11 { visibility: hidden; display: none;  }
+
+
+/* EOF */

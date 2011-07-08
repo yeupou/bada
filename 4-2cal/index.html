@@ -7,21 +7,33 @@
  <link rel="stylesheet" type="text/css" href="css/4-2cal.css" />
  <script src="js/4-2cal.js" type="text/javascript"></script>
 </head>
-<body onload="init();">
+<body onload="javascript:init();">
   
   <div id="box">
     <table>
       <tr class="days">
-	<td id="dL">L</td>
-	<td id="dMa">M</td>
-	<td id="dMe">M</td>
-	<td id="dJ">J</td>
-	<td id="dV">V</td>
-	<td id="dS">S</td>
-	<td id="dD">D</td>
-      </tr>      
+	<td id="L">L</td>
+	<td id="Ma">M</td>
+	<td id="Me">M</td>
+	<td id="J">J</td>
+	<td id="V">V</td>
+	<td id="S">S</td>
+	<td id="D">D</td>
+      </tr> 
+      <script>buildCal()</script>
     </table>
-    <div class="month">J u i l l e t</span>
+    <div id="month0">J a n v i e r</div>
+    <div id="month1">F é v r i e r</div>
+    <div id="month2">M a r s</div>
+    <div id="month3">A v r i l</div>
+    <div id="month4">M a i</div>
+    <div id="month5">J u i n</div>
+    <div id="month6">J u i l l e t</div>
+    <div id="month7">A o û t</div>
+    <div id="month8">S e p t e m b r e</div>
+    <div id="month9">O c t o b r e</div>
+    <div id="month10">N o v e m b r e</div>
+    <div id="month11">D é c e m b r e</div>
   </div>
   
 </body>

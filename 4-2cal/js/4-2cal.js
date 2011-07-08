@@ -20,33 +20,14 @@
 function init(){
   /* workaround: bada 1.1 disregards background-image properly set in CSS */ 
   document.getElementById('box').style['background-image'] = 'url(images/back.png)';
- document.getElementById('S').style['text-decoration'] = 'underline: true';
 
-  buildcal();
 }
 
 
-function testLogo()
-{
- alert('Hello Bada');
-}
- 
 
 /* date related stuff */
-function buildcal() {
+function buildCal() {
   var Months = new Array(12);
-  Months[0] = ("janvier");
-  Months[1] = ("février");
-  Months[2] = ("mars");
-  Months[3] = ("avril");
-  Months[4] = ("mai");
-  Months[5] = ("juin");
-  Months[6] = ("juillet");
-  Months[7] = ("août");
-  Months[8] = ("septembre");
-  Months[9] = ("octobre");
-  Months[10] = ("novembre");
-  Months[11] = ("décembre");
   
   var Days = new Array(7);
   Days[0] = ("L");
@@ -62,36 +43,51 @@ function buildcal() {
   
   var stdout;
   
-  var Cal = new Date();
-  var Today = Calendar.getDate();
-  var Weekday = Calendar.getDay();
-  
-  /* make more visible the current day */
-  document.getElementById(Days[Weekday]).style['text-decoration'] = 'underline: true';
-  // DBG
-  document.getElementById(Days[0]).style['text-decoration'] = 'underline: true';
-  document.getElementById('Me').style['text-decoration'] = 'underline: true';
+  var Cal = new Date(); 
+  var Today = Cal.getDate();
+  var Weekday = (Cal.getDay() + 6) % 7; /* getDay that starts weeks on Sat */
+  var Month = Cal.getMonth(); 
+  var Year = Cal.getYear(); 
 
-  stdout += '<tr>';
+  /* set more visibility for the current day of the week */
+  document.getElementById(Days[Weekday]).style['text-decoration'] = 'underline';
+
+  /* print name of the currently printed month, hide the others */
+  /*  document.getElementById('month' + Cal.getMonth()).style['background-image'] = 'url(images/back.png)'; */
+  /*  document.getElementById('month0').style['visibility'] = 'visible';   */
+  /*for(i=0; i < 12; i++) {
+     if (i != Calendar.getMonth()) {
+	document.getElementById('month'+Cal.getMonth()).style['display'] = 'none';
+     }
+  }  */
+
+  /* build a neat days table: */
+  stdout = '<tr>';
   
-  /* then actually list days */
-  for(i=0; i < Cal.getDay(); i++) {
+  /* first blank spaces (starts at 1st) */
+  Cal.setDate(1);
+  for(i=0; i < (Cal.getDay() + 6) % 7; i++) {
     stdout += '<td>&nbsp;</td>';
   }  
+
+  /* then real days */
   for(i=0; i < MaxDaysPerMonth; i++) {
     if (Cal.getDate() > i) {
-      cur = Cal.getDay();
+      var thisWeekday = (Cal.getDay() + 6) % 7;
       
-      if (cur == 0) {
+      if (thisWeekday == 0) {
 	stdout += '<tr>';
       }
       
-      if (cur != MaxDaysPerWeek) {
-	stdout += '<td>' + Cal.getDate() + '</td>';
-	
+      if (thisWeekday != MaxDaysPerWeek) {
+	if (Cal.getDate() == Today) { 
+	  stdout += '<td class="underline">' + Cal.getDate() + '</td>';
+	} else {
+	  stdout += '<td>' + Cal.getDate() + '</td>';
+	}
       }
-
-      if (cur == MaxDaysPerWeek) {
+      
+      if (thisWeekday == MaxDaysPerWeek) {
 	stdout += '</tr>';
       }
       
