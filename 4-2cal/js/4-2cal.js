@@ -22,7 +22,7 @@ shownMonth = undefined;
 shownYear = undefined;
 group = undefined;
 
-function init(){
+function init() {
   /* FIXME: disregards background-image set in CSS */ 
   document.getElementById('box').style['background-image'] = 'url(images/back.png)'; 
   document.getElementById('buttons').style['background-image'] = 'url(images/back2.png)'; 
@@ -39,12 +39,12 @@ function init(){
     if (c.indexOf('groupPref=') == 0) {
       group = c.substring('groupPref='.length,c.length);
     }
-  } 
+  }
 
   buildCal();
 }
 
-function resetCal(){
+function resetCal() {
   shownMonth = undefined;
   shownYear = undefined;
   buildCal();  
@@ -160,7 +160,7 @@ function buildCal(monthAsked) {
 	/* if possible, prepare the relevant class of the day field */
 	var class = undefined;
 	if (cycleDay != undefined && cycleAMPM != undefined) {
-	  /* RL/RC stays blank */
+	  /* RLRC stays blank */
 	  if (cycleDay < 5) {
 	    if (cycleAMPM == 'PM') { class = 'pm'; }
 	    if (cycleAMPM == 'AM') { class = 'am'; }
