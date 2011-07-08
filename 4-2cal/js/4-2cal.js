@@ -40,9 +40,9 @@ function buildCal() {
   
   var MaxDaysPerWeek = 7;
   var MaxDaysPerMonth = 31;
-  
+
   var stdout;
-  
+    
   var Cal = new Date(); 
   var Today = Cal.getDate();
   var Weekday = (Cal.getDay() + 6) % 7; /* getDay that starts weeks on Sat */
@@ -53,13 +53,13 @@ function buildCal() {
   document.getElementById(Days[Weekday]).style['text-decoration'] = 'underline';
 
   /* print name of the currently printed month, hide the others */
-  /*  document.getElementById('month' + Cal.getMonth()).style['background-image'] = 'url(images/back.png)'; */
-  /*  document.getElementById('month0').style['visibility'] = 'visible';   */
-  /*for(i=0; i < 12; i++) {
-     if (i != Calendar.getMonth()) {
-	document.getElementById('month'+Cal.getMonth()).style['display'] = 'none';
+  document.getElementById('month' + Cal.getMonth()).style['background-image'] = 'url(images/back.png)';
+  document.getElementById('month' + Cal.getMonth()).style['display'] = 'inline';   
+  for(i=0; i < 12; i++) {
+     if (i != Cal.getMonth()) {
+       document.getElementById('month' + i).style['display'] = 'none';
      }
-  }  */
+  } 
 
   /* build a neat days table: */
   stdout = '<tr>';
