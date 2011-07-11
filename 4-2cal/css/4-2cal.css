@@ -64,6 +64,7 @@ table {
 .days {
   width: 1.5em;
   font-weight: bold;
+  color: #DCDCDC;
 }
 
 .less {
@@ -84,11 +85,11 @@ table {
 }
 
 img.configure {
-  width: 1em;
+  width: 1.3em;
 }
 
 img.nextprev {
-  width: 2em;
+  width: 2.2em;
 }
 
 #month0 { display: none; border-radius: 0 0.8em 0 0; float: right; padding-right: 4em; padding-left: 1em;  }

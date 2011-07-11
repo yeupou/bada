@@ -22,6 +22,7 @@ shownMonth = undefined;
 shownYear = undefined;
 group = undefined;
 
+/* start up */
 function init() {
   /* FIXME: disregards background-image set in CSS */ 
   document.getElementById('box').style['background-image'] = 'url(images/back.png)'; 
@@ -41,16 +42,28 @@ function init() {
     }
   }
 
-  buildCal();
+  buildCal(); 
+  timeLoop();
 }
 
+/* make sure we regularly redraw the calendar 
+ (necessary so the underlined current day get updated by itself each day */ 
+function timeLoop() {
+  /* use milliseconds : 1000 = 1s, 
+                       60000 = 1m 
+                      900000 = 15m */
+  setTimeout("buildCal()",900000);
+  setTimeout("timeLoop()",900000);
+}
+
+/* shortcut to display the current month*/
 function resetCal() {
   shownMonth = undefined;
   shownYear = undefined;
   buildCal();  
 }
 
-/* date related stuff */
+/* draw the calendar */
 function buildCal(monthAsked) {
 
   var Months = new Array(12);
@@ -75,6 +88,7 @@ function buildCal(monthAsked) {
   var Weekday = (Cal.getDay() + 6) % 7; /* getDay that starts weeks on Sat */
   if (shownMonth == undefined) { shownMonth = Cal.getMonth(); }
   var Month = shownMonth;
+  var IsCurrentMonth = undefined;
   if (shownYear == undefined) { shownYear = Cal.getFullYear(); }
   var Year = shownYear;
 
@@ -98,6 +112,13 @@ function buildCal(monthAsked) {
     /* for future ref */
     shownMonth = Month;
   }
+
+
+  /* for future ref */
+  if (Cal.getMonth() == Month) {
+    IsCurrentMonth = 1;
+  }
+
 
   Cal.setMonth(Month);
   Cal.setYear(Year);
@@ -186,7 +207,7 @@ function buildCal(monthAsked) {
 	stdout += '>';
 	
 
-	if (Cal.getDate() == Today && monthAsked == undefined) { 
+	if (Cal.getDate() == Today && IsCurrentMonth == 1) { 
 	  stdout += '<span class="underline">' + Cal.getDate() + '</span>';
 	} else {
 	  stdout += Cal.getDate();
@@ -214,13 +235,15 @@ function buildCal(monthAsked) {
 
 }
 
+/* advertise the year currently active */
 function showYear() {
   alert(shownYear);
 }
 
 
+/* compare a date with the reference date for
+ a given cycle */
 function guessCycle(ToCompareDate) {
-  /* compare sent date with the reference date: */
   
   var RefDate;
   if (group == undefined) { return; }
@@ -251,6 +274,7 @@ function guessCycle(ToCompareDate) {
   return;  
 }
 
+/* show page to edit config */ 
 function editConfig() {
   document.getElementById('box').style['display'] = 'none'; 
   document.getElementById('buttons').style['display'] = 'none'; 
@@ -258,6 +282,7 @@ function editConfig() {
 
 }
 
+/* save config */
 function setConfig(groupAsked) {
   /* store config in cookie */
   var Expires = new Date();
