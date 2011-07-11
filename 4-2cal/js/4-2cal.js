@@ -103,11 +103,12 @@ function buildCal(monthAsked) {
   Cal.setYear(Year);
 
   /* set more visibility for the current day of the week of current month */
-  if (monthAsked == undefined) {
+  /* FIXME: weird results with Bada, forget this for now.
+    if (monthAsked == undefined) {
     document.getElementById(Days[Weekday]).style['text-decoration'] = 'underline';
   } else {    
     document.getElementById(Days[Weekday]).style['text-decoration'] = 'none';    
-  }
+    }*/
 
   /* print name of the currently printed month, hide the others */
   document.getElementById('month' + Month).style['background-image'] = 'url(images/back.png)';
