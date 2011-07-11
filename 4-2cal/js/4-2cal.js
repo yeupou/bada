@@ -22,6 +22,7 @@ shownMonth = undefined;
 shownYear = undefined;
 group = undefined;
 
+
 /* start up */
 function init() {
   /* FIXME: disregards background-image set in CSS */ 
@@ -31,18 +32,12 @@ function init() {
   document.getElementById('configtitle').style['background-image'] = 'url(images/back.png)'; 
   
   /* obtain cookie-stored config */
-  var cookieSplit = document.cookie.split(';'); 
-  for(i=0; i < cookieSplit.length; i++) {
-    var c = cookieSplit[i];
-    while (c.charAt(0) == ' ') { 
-      c = c.substring(1,c.length);
-    }
-    if (c.indexOf('groupPref=') == 0) {
-      group = c.substring('groupPref='.length,c.length);
-    }
-  }
+  group = getCookie('groupPref');
 
+  /* set up calendar */
   buildCal(); 
+
+  /* start timer */
   timeLoop();
 }
 
@@ -148,8 +143,13 @@ function buildCal(monthAsked) {
   if (group != undefined) {
     /* we decided to work with date references as of june 2011, so
      this wont work for any date before july. Squish it here */
-    if (Year > 2011 || Month > 5) {
+    if (Year > 2011 || (Month > 5 && Year == 2011)) {
       guessCycle(new Date(Year,Month,1,12,0,0));
+    } else {
+      if (getCookie('TooOldDateWarning') != 1) {
+	alert("Date antérieure aux valeurs de référence, pas de calcul des cycles.");
+	setCookie('TooOldDateWarning', 1);
+      }
     }
   }
 
@@ -285,9 +285,7 @@ function editConfig() {
 /* save config */
 function setConfig(groupAsked) {
   /* store config in cookie */
-  var Expires = new Date();
-  Expires.setTime(Expires.getTime()+(172800000000));
-  document.cookie = 'groupPref='+groupAsked+'; expires='+Expires.toGMTString()+'; path=/';
+  setCookie('groupPref', groupAsked);
 
   /* redraw calendar */
   group = groupAsked;
@@ -297,5 +295,29 @@ function setConfig(groupAsked) {
   document.getElementById('buttons').style['display'] = 'block'; 
   document.getElementById('config').style['display'] = 'none';   
 }
+
+/* get cookie info */
+function getCookie (Setting) {
+  Setting = Setting + '=';
+  var cookieSplit = document.cookie.split(';');
+  for(i=0; i < cookieSplit.length; i++) {
+    var c = cookieSplit[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1,c.length);
+    }
+    
+    if (c.indexOf(Setting) == 0) {
+      return c.substring(Setting.length, c.length);
+    }
+  }
+}
+
+/* set cookie info */
+function setCookie (Setting, Value) {
+  var Expires = new Date();
+  Expires.setTime(Expires.getTime()+(172800000000));
+  document.cookie = Setting+'='+Value+'; expires='+Expires.toGMTString()+'; path=/';
+}
+
 
 /* EOF */
