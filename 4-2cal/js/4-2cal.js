@@ -32,7 +32,8 @@ function init() {
   document.getElementById('configtitle').style['background-image'] = 'url(images/back.png)'; 
   
   /* obtain cookie-stored config */
-  group = getCookie('groupPref');
+  group = widget.preferenceForKey('groupPref');
+
 
   /* set up calendar */
   buildCal(); 
@@ -146,9 +147,9 @@ function buildCal(monthAsked) {
     if (Year > 2011 || (Month > 5 && Year == 2011)) {
       guessCycle(new Date(Year,Month,1,12,0,0));
     } else {
-      if (getCookie('TooOldDateWarning') != 1) {
+      if (widget.preferenceForKey('TooOldDateWarning') != 1) {
 	alert("Date antérieure aux valeurs de référence, pas de calcul des cycles.");
-	setCookie('TooOldDateWarning', 1);
+	widget.setPreferenceForKey('TooOldDateWarning', 1); 
       }
     }
   }
@@ -285,8 +286,8 @@ function editConfig() {
 /* save config */
 function setConfig(groupAsked) {
   /* store config in cookie */
-  setCookie('groupPref', groupAsked);
-
+  widget.setPreferenceForKey('groupPref', groupAsked);
+  
   /* redraw calendar */
   group = groupAsked;
   buildCal(0); 
@@ -294,29 +295,6 @@ function setConfig(groupAsked) {
   document.getElementById('box').style['display'] = 'block'; 
   document.getElementById('buttons').style['display'] = 'block'; 
   document.getElementById('config').style['display'] = 'none';   
-}
-
-/* get cookie info */
-function getCookie (Setting) {
-  Setting = Setting + '=';
-  var cookieSplit = document.cookie.split(';');
-  for(i=0; i < cookieSplit.length; i++) {
-    var c = cookieSplit[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1,c.length);
-    }
-    
-    if (c.indexOf(Setting) == 0) {
-      return c.substring(Setting.length, c.length);
-    }
-  }
-}
-
-/* set cookie info */
-function setCookie (Setting, Value) {
-  var Expires = new Date();
-  Expires.setTime(Expires.getTime()+(172800000000));
-  document.cookie = Setting+'='+Value+'; expires='+Expires.toGMTString()+'; path=/';
 }
 
 
