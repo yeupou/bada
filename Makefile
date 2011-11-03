@@ -14,4 +14,6 @@ cal:
 git:
 	git commit -a -m "Update"
 	git push
+	git push github
+
 
