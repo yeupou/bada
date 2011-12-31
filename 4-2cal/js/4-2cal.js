@@ -143,8 +143,9 @@ function buildCal(monthAsked) {
   cycleDay = undefined;      
   if (group != undefined) {
     /* we decided to work with date references as of june 2011, so
-     this wont work for any date before july. Squish it here */
-    if (Year > 2011 || (Month > 5 && Year == 2011)) {
+     this wont work for any date before july. Squish it here 
+     update: now directly for 2012 */
+    if (Year > 2011) {
       guessCycle(new Date(Year,Month,1,12,0,0));
     } else {
       if (widget.preferenceForKey('TooOldDateWarning') != 1) {
@@ -248,9 +249,9 @@ function guessCycle(ToCompareDate) {
   
   var RefDate;
   if (group == undefined) { return; }
-  if (group == 1) { RefDate = new Date(2011,5,26,12,0,0); }
-  if (group == 2) { RefDate = new Date(2011,5,22,12,0,0); }
-  if (group == 3) { RefDate = new Date(2011,5,30,12,0,0); }
+  if (group == 1) { RefDate = new Date(2011,12,29,12,0,0); }
+  if (group == 2) { RefDate = new Date(2011,12,25,12,0,0); }
+  if (group == 3) { RefDate = new Date(2011,12,21,12,0,0); }
 
   /* result in days */
   var Delta = (ToCompareDate.getTime() - RefDate.getTime())/86400000;
