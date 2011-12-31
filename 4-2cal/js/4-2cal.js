@@ -251,7 +251,7 @@ function guessCycle(ToCompareDate) {
   if (group == undefined) { return; }
   if (group == 1) { RefDate = new Date(2011,12,29,12,0,0); }
   if (group == 2) { RefDate = new Date(2011,12,25,12,0,0); }
-  if (group == 3) { RefDate = new Date(2011,12,21,12,0,0); }
+  if (group == 3) { RefDate = new Date(2011,12,25,12,0,0); }
 
   /* result in days */
   var Delta = (ToCompareDate.getTime() - RefDate.getTime())/86400000;
